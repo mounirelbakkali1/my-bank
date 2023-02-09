@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface OperationRespository extends JpaRepository<Operation,Long> {
-    @Query("select o from Operation o where o.compte.codeDeCompte =:x order by o.dateOfOperation desc")
+    @Query(value = "select * from operations  where code_client =:x order by date_of_operation desc",nativeQuery = true)
     public Page<Operation> getListOperations(@Param("x") String codeCompte , Pageable pageable);
 }

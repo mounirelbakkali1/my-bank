@@ -4,6 +4,7 @@ package com.mybank.mybank.entities;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.Fetch;
 
 import java.util.ArrayList;
@@ -20,21 +21,26 @@ import static jakarta.persistence.TemporalType.DATE;
 @DiscriminatorColumn(name = "TYPE_COMPTE",discriminatorType = STRING,length = 2)
 @Getter
 @Setter
+@ToString
 public abstract class Compte {
 
     @Id
             @Column(name = "code_compte")
-    String codeDeCompte;
+    private String codeDeCompte;
     @Column(name = "creation_date")
             @Temporal(DATE)
     Date CreationDate;
     @Column(name = "solde",columnDefinition = "BIGINT")
-    double solde;
+    private double solde;
 
     @OneToMany(cascade = ALL)
     @JoinColumn(name = "code_client")
     @Fetch(org.hibernate.annotations.FetchMode.SUBSELECT)
     Collection<Operation> operations= new ArrayList<>();
+
+
+    @ManyToOne
+    Client client;
 
 
     public void addOperation(Operation operation){

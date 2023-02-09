@@ -1,9 +1,6 @@
 package com.mybank.mybank;
 
-import com.mybank.mybank.entities.Client;
-import com.mybank.mybank.entities.CompteEpargne;
-import com.mybank.mybank.entities.Retrait;
-import com.mybank.mybank.entities.Versement;
+import com.mybank.mybank.entities.*;
 import com.mybank.mybank.repositories.AccountRepository;
 import com.mybank.mybank.repositories.ClientRepository;
 import com.mybank.mybank.services.IBankServiceImpl;
@@ -26,6 +23,8 @@ public class MyBankApplication {
     @Autowired
     IBankServiceImpl iBankService;
 
+    @Autowired AccountRepository accountRepository;
+
 
     public static void main(String[] args) {
         SpringApplication.run(MyBankApplication.class, args);
@@ -34,7 +33,16 @@ public class MyBankApplication {
     @Bean
     CommandLineRunner runner() {
         return args -> {
-            //iBankService.retirer("MA89UY89",1900);
+         /*   iBankService.verser("MA89UY90",1900);
+            iBankService.retirer("MA89UY90",900);
+            iBankService.verser("MA89UY90",8000);*/
+            /*CompteCourant compteCourant = new CompteCourant();
+            compteCourant.setCodeDeCompte("MA89UY91");
+            compteCourant.setSolde(2900);
+            compteCourant.setDecouvert(2.3);
+
+            accountRepository.save(compteCourant);*/
+
         };
     }
 }

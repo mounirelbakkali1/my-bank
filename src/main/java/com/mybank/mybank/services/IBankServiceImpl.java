@@ -39,6 +39,7 @@ public class IBankServiceImpl implements IBankService{
         versement.setMontant(montant);
         operationRespository.save(versement);
         compte.setSolde(compte.getSolde()+montant);
+        compte.addOperation(versement);
         accountRepository.save(compte);
 
     }
