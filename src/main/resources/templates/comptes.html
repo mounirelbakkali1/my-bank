@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org" xmlns:layout=" http://ultraq.net.nz/thymeleaf/layout" layout:decorator="template1">
+<head th:replace="fragments :: html_head">
+</head>
+<body style="min-height: 100vh">
+
+   <main>
+       <header th:replace="fragments :: header"></header>
+       <section th:replace="fragments :: main_section"></section>
+       <footer th:replace="fragments :: footer"></footer>
+   </main>
+
+</body>
+</html>

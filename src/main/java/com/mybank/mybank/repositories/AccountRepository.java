@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface AccountRepository extends JpaRepository<Compte,Long> {
+    Compte findByCodeDeCompte(String code_utilisateur);
 }

@@ -1,8 +1,12 @@
 package com.mybank.mybank.entities;
 
+import com.mybank.mybank.services.INumOperationImpl;
+import com.mybank.mybank.services.OperationsListner;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 
@@ -16,6 +20,8 @@ import static jakarta.persistence.TemporalType.DATE;
 @DiscriminatorColumn(name = "TYPE_OPRATION",discriminatorType = STRING,length = 1)
 @Setter
 @Getter
+@NoArgsConstructor
+@EntityListeners(OperationsListner.class)
 public abstract class Operation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,6 +36,13 @@ public abstract class Operation {
     private Date dateOfOperation ;
 
     private double montant;
+
+    @ManyToOne
+    private Compte compte;
+
+
+
+
 
 
 
