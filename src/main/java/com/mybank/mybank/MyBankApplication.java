@@ -16,6 +16,7 @@ import org.springframework.context.annotation.Profile;
 import java.math.BigInteger;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Optional;
 
 @SpringBootApplication
 public class MyBankApplication {
@@ -24,6 +25,7 @@ public class MyBankApplication {
     IBankServiceImpl iBankService;
 
     @Autowired AccountRepository accountRepository;
+    @Autowired ClientRepository clientRepository;
 
 
     public static void main(String[] args) {
@@ -36,12 +38,16 @@ public class MyBankApplication {
          /*   iBankService.verser("MA89UY90",1900);
             iBankService.retirer("MA89UY90",900);
             iBankService.verser("MA89UY90",8000);*/
-            /*CompteCourant compteCourant = new CompteCourant();
-            compteCourant.setCodeDeCompte("MA89UY91");
-            compteCourant.setSolde(2900);
-            compteCourant.setDecouvert(2.3);
+       /*     CompteEpargne compteEpargne = new CompteEpargne();
+            compteEpargne.setCodeDeCompte("MA89UY92");
+            compteEpargne.setSolde(3000);
+            compteEpargne.setTaux(2.3);
 
-            accountRepository.save(compteCourant);*/
+            Optional<Client> client = clientRepository.findById(1L);
+            client.ifPresent(client1 ->{
+                client1.addAccount(compteEpargne);
+                clientRepository.save(client1);
+            });*/
 
         };
     }

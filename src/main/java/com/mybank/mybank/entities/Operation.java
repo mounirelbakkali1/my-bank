@@ -8,11 +8,13 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import static jakarta.persistence.DiscriminatorType.STRING;
 import static jakarta.persistence.InheritanceType.SINGLE_TABLE;
 import static jakarta.persistence.TemporalType.DATE;
+import static jakarta.persistence.TemporalType.TIMESTAMP;
 
 @Entity
 @Table(name = "operations")
@@ -32,10 +34,12 @@ public abstract class Operation {
     @Column(name = "numero_operation")
     private long numOfOperation ;
 
-    @Temporal(DATE)
+
+    @Temporal(TIMESTAMP)
+    @Column(name="date_of_operation", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
     private Date dateOfOperation ;
 
-    private double montant;
+    private BigDecimal montant;
 
     @ManyToOne
     private Compte compte;

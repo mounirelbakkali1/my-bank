@@ -6,6 +6,7 @@ import jakarta.persistence.PrePersist;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Timestamp;
 import java.util.Date;
 
 @Component
@@ -15,6 +16,6 @@ public class OperationsListner {
 
     @PrePersist void prePersist(Operation operation){
         operation.setNumOfOperation(numOperation.generateNumOperation());
-        operation.setDateOfOperation(new Date());
+        operation.setDateOfOperation(new Timestamp(System.currentTimeMillis()));
     }
 }

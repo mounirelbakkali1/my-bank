@@ -23,6 +23,8 @@ public class Client {
     private Long code ;
     @NotBlank
     private String name ;
+    @NotBlank
+    private String email ; 
     @OneToMany(fetch = FetchType.EAGER,cascade = ALL)
     @JoinColumn(name = "client_id")
     @Fetch(SUBSELECT)
